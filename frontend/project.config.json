@@ -9,7 +9,7 @@
 	"compileType": "weapp",
 	"libVersion": "1.5.4",
 	"appid": "touristappid",
-	"projectname": "racheltest2",
+	"projectname": "MyBookshelf",
 	"condition": {
 		"weapp": {
 			"current": -1,
