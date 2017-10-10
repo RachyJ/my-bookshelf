@@ -1,6 +1,6 @@
 import sqlite3
 
-db = sqlite3.connect('books.db')
+db = sqlite3.connect('data/books.db')
 db.row_factory = sqlite3.Row
 cursor = db.cursor()
 cursor.execute('''SELECT * FROM tblbook''')
