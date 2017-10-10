@@ -5,6 +5,9 @@ c = conn.cursor()
 c.execute('''CREATE TABLE IF NOT EXISTS tblbook
               (id REAL, title TEXT, alt TEXT, image TEXT, author TEXT, publisher TEXT, pubdate DATE, rating REAL, booklist TEXT)''')
 
+c.execute('''CREATE TABLE IF NOT EXISTS tblbooklist
+              (list_id INTEGER PRIMARY KEY, list_name TEXT, list_crtdate DATE)''')
+
 # Insert a row of data
 c.execute('''INSERT INTO tblbook(id, title, alt, image, author,publisher,pubdate,rating,booklist)
             VALUES (?,?,?,?,?,?,?,?,?)''',
@@ -17,6 +20,9 @@ c.execute('''INSERT INTO tblbook(id, title, alt, image, author,publisher,pubdate
         '2006-01-05',
         8.7,
         'To-read'))
+
+c.execute('''INSERT INTO tblbooklist(list_name,list_crtdate)
+            VALUES (?,?)''',('To-read','2017-10-10'))
 
 # Save (commit) the changes
 conn.commit()
