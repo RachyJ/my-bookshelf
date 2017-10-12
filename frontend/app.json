@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/query/query",
     "pages/index/index",
     "pages/detail/detail"
   ],
