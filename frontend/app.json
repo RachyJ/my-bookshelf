@@ -3,6 +3,7 @@
     "pages/query/query",
     "pages/index/index",
     "pages/detail/detail"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

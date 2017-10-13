@@ -1,5 +1,7 @@
 <!--pages/index/index.wxml-->
 <view class="root" style="height: {{height}}rpx">
-    <input class="ip-input" bindinput="ipValue" placeholder="请输入要查询的域名或IP地址" />
+    <input class="ip-input" bindinput="ipValue" placeholder="查询信息" />
     <button type="primary" class="query-button" bindtap="queryIp">查询</button>
+    <input class="ip-input" bindinput="bookName" placeholder="发送信息" />
+    <button type="primary" class="query-button" bindtap="saveBook">发送</button>
 </view>
