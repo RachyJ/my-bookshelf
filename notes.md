@@ -12,4 +12,33 @@ rachels-MacBook-Pro:backend rachelj$ flask run
 
 ## 1014
 
-trying to pass data from js to python
+pass data from js to flask
+
+http://flask.pocoo.org/docs/0.12/api/#flask.Request
+
+https://stackoverflow.com/questions/10434599/how-to-get-data-received-in-flask-request
+
+
+It is simply as follows
+
+For URL Query parameter, use request.args
+
+```
+search = request.args.get("search")
+page = request.args.get("page")
+```
+
+For Form input, use request.form
+
+```
+email = request.form.get('email')
+password = request.form.get('password')
+```
+
+For data type application/json, use request.data
+
+```
+# data in string format and you have to parse into dictionary
+data = request.data
+dataDict = json.loads(data)
+```
