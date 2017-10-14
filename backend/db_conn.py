@@ -23,6 +23,8 @@ c.execute('''INSERT INTO tblbook(id, title, alt, image, author,publisher,pubdate
 
 c.execute('''INSERT INTO tblbooklist(list_name,list_crtdate)
             VALUES (?,?)''',('To-read','2017-10-10'))
+c.execute('''INSERT INTO tblbooklist(list_name,list_crtdate)
+            VALUES (?,?)''',('Already-read','2017-10-15'))
 
 # Save (commit) the changes
 conn.commit()
