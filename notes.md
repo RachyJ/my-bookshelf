@@ -9,3 +9,7 @@ rachels-MacBook-Pro:backend rachelj$ flask run
 ```
 
 微信小程序API 发起请求: [wx.request(OBJECT)](https://www.w3cschool.cn/weixinapp/weixinapp-network-request.html)
+
+## 1014
+
+trying to pass data from js to python

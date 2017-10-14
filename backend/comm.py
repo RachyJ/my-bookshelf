@@ -22,7 +22,6 @@ def queryBookList():
         booklists = cursor.fetchall()
 
         for row in booklists:
-            # row['name'] returns the name column in the query, row['email'] returns email column.
             #return('{0} : {1}, {2}'.format(row['list_id'], row['list_name'], row['list_crtdate']))
             booklist.append(row)
             # return booklist
@@ -30,9 +29,10 @@ def queryBookList():
         conn.close()
 
 
-# @app.route('/', methods=['GET', 'POST'])
-# def login():
-#     if request.method == 'POST':
-#         return 'received post'
-#     else:
-#         return 'received GET'
+@app.route('/insertBookList', methods=['POST'])
+def insertBookList():
+        #insert a book list'
+        #return("insert a book list")
+        list_name = request.data
+        #return("insert a book list")
+        return json.loads(list_name)['booklistName']

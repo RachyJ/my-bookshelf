@@ -1,7 +1,7 @@
 // pages/index/index.js
 Page({
   data:{
-      bookName: '',
+      booklistName: {}
   },
   // ipValue: function (res) {
   //   this.setData({
@@ -32,15 +32,16 @@ Page({
     })
   },
 
-  saveBook: function(res){
-    let that = this;
+  insertBookList: function(res){
+    //let that = this;
     // url要设置成你的api地址
-    let url = 'http://127.0.0.1:5000/';
+    let url = 'http://127.0.0.1:5000/insertBookList';
+    let booklist = {'booklistName':'booklist 1'};
       wx.request({
         url: url,
-        data: that.data.bookName,
+        data: booklist,
         method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-        // header: {}, // 设置请求的 header
+        header: {'content-type': 'application/json'}, // 设置请求的 header
         success: function(res){
           console.log(res)
       }
