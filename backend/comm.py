@@ -1,6 +1,8 @@
 from flask import Flask, json, request, abort
 import requests
 import sqlite3
+import time
+from datetime import date
 
 app = Flask(__name__)
 
@@ -12,8 +14,6 @@ app = Flask(__name__)
 def queryBookList():
         #return 'received book list'
         booklist = []
-
-        import sqlite3
 
         conn = sqlite3.connect('data/books.db')
         cursor = conn.cursor()
@@ -32,7 +32,15 @@ def queryBookList():
 @app.route('/insertBookList', methods=['POST'])
 def insertBookList():
         #insert a book list'
-        #return("insert a book list")
-        list_name = request.data
-        #return("insert a book list")
-        return json.loads(list_name)['booklistName']
+        new_list =json.loads(request.data)['booklistName']
+        today = date.today()
+
+        conn = sqlite3.connect('data/books.db')
+        cursor = conn.cursor()
+
+        cursor.execute('''INSERT INTO tblbooklist(list_name,list_crtdate)
+                    VALUES (?,?)''',(new_list,today))
+        conn.commit()
+        #return json.loads(list_name)['booklistName']
+        return new_list
+        conn.close()

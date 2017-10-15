@@ -35,7 +35,6 @@ Page({
   insertBookList: function(res){
     let that = this;
     let booklistName = that.data.booklistName;
-    // url要设置成你的api地址
     let url = 'http://127.0.0.1:5000/insertBookList';
     let booklist = {'booklistName':booklistName};
       wx.request({
