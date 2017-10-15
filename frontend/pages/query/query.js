@@ -1,7 +1,7 @@
 // pages/index/index.js
 Page({
   data:{
-      booklistName: {}
+      booklistInput: {}
   },
   // ipValue: function (res) {
   //   this.setData({
@@ -9,11 +9,11 @@ Page({
   //   })
   // },
   //
-  // bookName: function (res) {
-  //   this.setData({
-  //     bookName: res.detail.value
-  //   })
-  // },
+  booklistInput: function (res) {
+    this.setData({
+      booklistName: res.detail.value
+    })
+  },
 
   queryBookList: function(res){
 
@@ -33,10 +33,11 @@ Page({
   },
 
   insertBookList: function(res){
-    //let that = this;
+    let that = this;
+    let booklistName = that.data.booklistName;
     // url要设置成你的api地址
     let url = 'http://127.0.0.1:5000/insertBookList';
-    let booklist = {'booklistName':'booklist 1'};
+    let booklist = {'booklistName':booklistName};
       wx.request({
         url: url,
         data: booklist,

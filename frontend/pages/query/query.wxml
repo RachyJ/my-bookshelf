@@ -1,6 +1,6 @@
 <!--pages/index/index.wxml-->
 <view class="root" style="height: {{height}}rpx">
     <button type="primary" class="query-button" bindtap="queryBookList">查询书单📚</button>
-    <input class="ip-input" bindinput="booklistName" placeholder="书单名称" />
+    <input class="ip-input" bindinput="booklistInput" placeholder="书单名称" />
     <button type="primary" class="query-button" bindtap="insertBookList">存储书单📚</button>
 </view>
