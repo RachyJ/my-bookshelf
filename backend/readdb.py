@@ -11,5 +11,5 @@ for row in cursor:
 cursor.execute('''SELECT * FROM tblbooklist''')
 for row in cursor:
     # row['name'] returns the name column in the query, row['email'] returns email column.
-    print('{0} : {1}, {2}'.format(row['list_id'], row['list_name'], row['list_crtdate']))
+    print('{0}: {1}'.format(row['list_name'], row['list_crtdate']))
 db.close()

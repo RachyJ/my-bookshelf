@@ -3,4 +3,5 @@
     <button type="primary" class="query-button" bindtap="queryBookList">查询书单📚</button>
     <input class="ip-input" bindinput="booklistInput" placeholder="书单名称" />
     <button type="primary" class="query-button" bindtap="insertBookList">存储书单📚</button>
+    <button type="primary" class="query-button" bindtap="deleteBookList">删除书单📚</button>
 </view>

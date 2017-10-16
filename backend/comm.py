@@ -13,29 +13,60 @@ def queryBookList():
         conn = sqlite3.connect('data/books.db')
         cursor = conn.cursor()
 
-        cursor.execute('''SELECT list_name FROM tblbooklist''')
-        booklists = cursor.fetchall()
+        try:
+            cursor.execute('''SELECT list_name FROM tblbooklist''')
+            booklists = cursor.fetchall()
 
-        for row in booklists:
-            #return('{0} : {1}, {2}'.format(row['list_id'], row['list_name'], row['list_crtdate']))
-            booklist.append(row)
-            # return booklist
-        return json.dumps(booklist)
-        conn.close()
+            for row in booklists:
+                #return('{0} : {1}, {2}'.format(row['list_id'], row['list_name'], row['list_crtdate']))
+                booklist.append(row)
+                # return booklist
+            return json.dumps(booklist)
+        except Exception as e:
+             # Roll back any change is something goes wrong
+             conn.rollback()
+             return e
+        finally:
+            conn.close()
 
 
 @app.route('/insertBookList', methods=['POST'])
 def insertBookList():
-        #insert a book list'
+        # insert a book list'
         new_list =json.loads(request.data)['booklistName']
         today = date.today()
 
         conn = sqlite3.connect('data/books.db')
         cursor = conn.cursor()
 
-        cursor.execute('''INSERT INTO tblbooklist(list_name,list_crtdate)
-                    VALUES (?,?)''',(new_list,today))
-        conn.commit()
-        #return json.loads(list_name)['booklistName']
-        #return new_list
-        conn.close()
+        try:
+            cursor.execute('''INSERT OR IGNORE INTO tblbooklist(list_name,list_crtdate)
+                        VALUES (?,?)''',(new_list,today))
+            conn.commit()
+            return "书单存储成功"
+        except Exception as e:
+             # Roll back any change is something goes wrong
+             conn.rollback()
+             return e
+        finally:
+            conn.close()
+
+
+
+@app.route('/deleteBookList', methods=['POST'])
+def deleteBookList():
+        # delete a book list'
+        seleted_list =json.loads(request.data)['booklistName']
+
+        conn = sqlite3.connect('data/books.db')
+        cursor = conn.cursor()
+        try:
+            cursor.execute("DELETE FROM tblbooklist WHERE list_name=?", (seleted_list,))
+            conn.commit()
+            return "书单已删除"
+        except Exception as e:
+            # Roll back any change is something goes wrong
+            conn.rollback()
+            return e
+        finally:
+            conn.close()

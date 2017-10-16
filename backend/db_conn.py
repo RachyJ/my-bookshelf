@@ -6,10 +6,10 @@ c.execute('''CREATE TABLE IF NOT EXISTS tblbook
               (book_id INTEGER PRIMARY KEY, douban_id REAL, title TEXT, alt TEXT, image TEXT, author TEXT, publisher TEXT, pubdate DATE, rating REAL, booklist TEXT)''')
 
 c.execute('''CREATE TABLE IF NOT EXISTS tblbooklist
-              (list_id INTEGER PRIMARY KEY, list_name TEXT, list_crtdate DATE)''')
+              (list_name TEXT PRIMARY KEY, list_crtdate DATE)''')
 
 # Insert a row of data
-c.execute('''INSERT INTO tblbook(id, title, alt, image, author,publisher,pubdate,rating,booklist)
+c.execute('''INSERT INTO tblbook(douban_id, title, alt, image, author,publisher,pubdate,rating,booklist)
             VALUES (?,?,?,?,?,?,?,?,?)''',
         (1003078,
         '小王子',
@@ -21,10 +21,10 @@ c.execute('''INSERT INTO tblbook(id, title, alt, image, author,publisher,pubdate
         8.7,
         'To-read'))
 
-c.execute('''INSERT INTO tblbooklist(list_name,list_crtdate)
-            VALUES (?,?)''',('To-read','2017-10-10'))
-c.execute('''INSERT INTO tblbooklist(list_name,list_crtdate)
-            VALUES (?,?)''',('Already-read','2017-10-15'))
+# c.execute('''INSERT INTO tblbooklist(list_name,list_crtdate)
+#             VALUES (?,?)''',('To-read','2017-10-10'))
+# c.execute('''INSERT INTO tblbooklist(list_name,list_crtdate)
+#             VALUES (?,?)''',('Already-read','2017-10-15'))
 
 # Save (commit) the changes
 conn.commit()
