@@ -5,3 +5,9 @@
     <button type="primary" class="query-button" bindtap="insertBookList">存储书单📚</button>
     <button type="primary" class="query-button" bindtap="deleteBookList">删除书单📚</button>
 </view>
+<view class="root" style="height: {{height}}rpx">
+    <input class="ip-input" bindinput="bookInput" placeholder="书本名称" />
+    <input class="ip-input" bindinput="booklistInput" placeholder="书单名称" />
+    <button type="primary" class="query-button" bindtap="addToList">加入书单📚</button>
+    <button type="primary" class="query-button" bindtap="removeFromList">移出书单📚</button>
+</view>

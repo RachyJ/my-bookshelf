@@ -3,12 +3,12 @@ Page({
   data:{
       booklistInput: {}
   },
-  // ipValue: function (res) {
-  //   this.setData({
-  //     ip: res.detail.value
-  //   })
-  // },
-  //
+  bookInput: function (res) {
+    this.setData({
+      bookName: res.detail.value
+    })
+  },
+
   booklistInput: function (res) {
     this.setData({
       booklistName: res.detail.value
@@ -53,6 +53,23 @@ Page({
     let booklistName = that.data.booklistName;
     let url = 'http://127.0.0.1:5000/deleteBookList';
     let booklist = {'booklistName':booklistName};
+      wx.request({
+        url: url,
+        data: booklist,
+        method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+        header: {'content-type': 'application/json'}, // 设置请求的 header
+        success: function(res){
+          console.log(res)
+      }
+    })
+  },
+
+  addToList: function(res){
+    let that = this;
+    let booklistName = that.data.booklistName;
+    let bookName = that.data.bookName;
+    let url = 'http://127.0.0.1:5000/addToList';
+    let booklist = {'booklistName':booklistName, 'bookName':bookName};
       wx.request({
         url: url,
         data: booklist,

@@ -42,3 +42,11 @@ For data type application/json, use request.data
 data = request.data
 dataDict = json.loads(data)
 ```
+
+## 1016
+
+Insert unique rows into SQLite:
+
+```
+INSERT OR IGNORE
+```

@@ -52,7 +52,6 @@ def insertBookList():
             conn.close()
 
 
-
 @app.route('/deleteBookList', methods=['POST'])
 def deleteBookList():
         # delete a book list'
@@ -68,5 +67,27 @@ def deleteBookList():
             # Roll back any change is something goes wrong
             conn.rollback()
             return e
+        finally:
+            conn.close()
+
+
+@app.route('/addToList', methods=['POST'])
+def addToList():
+        # add a book to a list
+        listName = json.loads(request.data)['booklistName']
+        bookName = json.loads(request.data)['bookName']
+
+        conn = sqlite3.connect('data/books.db')
+        cursor = conn.cursor()
+
+        try:
+            cursor.execute('''INSERT INTO tblbooknlist(title,list_name)
+                        VALUES (?,?)''',(bookName,listName))
+            conn.commit()
+            return "成功加入书单"
+        except Exception as e:
+             # Roll back any change is something goes wrong
+             conn.rollback()
+             return "exception occured"
         finally:
             conn.close()
