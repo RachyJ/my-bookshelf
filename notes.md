@@ -50,3 +50,11 @@ Insert unique rows into SQLite:
 ```
 INSERT OR IGNORE
 ```
+
+## 1017
+
+```
+
+cursor.execute("DELETE FROM tblbooknlist WHERE title=? and list_name=?;",
+                (bookName,listName))
+```

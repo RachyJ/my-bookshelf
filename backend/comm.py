@@ -91,3 +91,24 @@ def addToList():
              return "exception occured"
         finally:
             conn.close()
+
+@app.route('/removeFromList', methods=['POST'])
+def removeFromList():
+        # remove a book from a list
+        listName = json.loads(request.data)['booklistName']
+        bookName = json.loads(request.data)['bookName']
+
+        conn = sqlite3.connect('data/books.db')
+        cursor = conn.cursor()
+
+        try:
+            cursor.execute("DELETE FROM tblbooknlist WHERE title=? and list_name=?;",
+                            (bookName,listName))
+            conn.commit()
+            return "成功移出书单"
+        except Exception as e:
+             # Roll back any change is something goes wrong
+             conn.rollback()
+             return "exception occured"
+        finally:
+            conn.close()

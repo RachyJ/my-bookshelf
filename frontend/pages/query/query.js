@@ -81,6 +81,24 @@ Page({
     })
   },
 
+
+  removeFromList: function(res){
+    let that = this;
+    let booklistName = that.data.booklistName;
+    let bookName = that.data.bookName;
+    let url = 'http://127.0.0.1:5000/removeFromList';
+    let booklist = {'booklistName':booklistName, 'bookName':bookName};
+      wx.request({
+        url: url,
+        data: booklist,
+        method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+        header: {'content-type': 'application/json'}, // 设置请求的 header
+        success: function(res){
+          console.log(res)
+      }
+    })
+  },
+
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
     let that = this;
