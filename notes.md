@@ -58,3 +58,9 @@ INSERT OR IGNORE
 cursor.execute("DELETE FROM tblbooknlist WHERE title=? and list_name=?;",
                 (bookName,listName))
 ```
+
+## 1018
+
+[Event handling](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/view/wxml/event.html)
+
+touchmove event
