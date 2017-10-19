@@ -71,6 +71,29 @@ def deleteBookList():
             conn.close()
 
 
+@app.route('/queryBook', methods=['GET'])
+def queryBook():
+        # query all books
+        book = []
+
+        conn = sqlite3.connect('data/books.db')
+        cursor = conn.cursor()
+
+        try:
+            cursor.execute('''SELECT douban_id FROM tblbook''')
+            books = cursor.fetchall()
+
+            for row in books:
+                book.append(row)
+            return json.dumps(book)
+        except Exception as e:
+             # Roll back any change is something goes wrong
+             conn.rollback()
+             return "exception occured"
+        finally:
+            conn.close()
+
+
 @app.route('/addToList', methods=['POST'])
 def addToList():
         # add a book to a list

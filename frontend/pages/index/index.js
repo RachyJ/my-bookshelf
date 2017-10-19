@@ -50,20 +50,20 @@ Page({
     requestData.call(this);
   },
 
-  //跳转到详细页面
-  toDetailPage: function (e) {
-    var bid = e.currentTarget.dataset.bid; //图书id [data-bid]
-    wx.navigateTo({
-      url: '../detail/detail?id=' + bid
-    });
-  },
-
   //跳转到书单页面
   toBookList: function (e) {
     //console.log("item touch moved");
     var bid = e.currentTarget.dataset.bid; //图书id [data-bid]
     wx.navigateTo({
       url: '../booklist/booklist?id=' + bid
+    });
+  },
+  
+  //跳转到详细页面
+  toDetailPage: function (e) {
+    var bid = e.currentTarget.dataset.bid; //图书id [data-bid]
+    wx.navigateTo({
+      url: '../detail/detail?id=' + bid
     });
   },
 
