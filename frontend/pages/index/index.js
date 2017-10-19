@@ -60,7 +60,11 @@ Page({
 
   //跳转到书单页面
   toBookList: function (e) {
-    console.log("item touch moved")
+    //console.log("item touch moved");
+    var bid = e.currentTarget.dataset.bid; //图书id [data-bid]
+    wx.navigateTo({
+      url: '../booklist/booklist?id=' + bid
+    });
   },
 
 });

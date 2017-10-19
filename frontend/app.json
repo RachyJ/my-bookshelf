@@ -2,8 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/query/query",
-    "pages/detail/detail"
-
+    "pages/detail/detail",
+    "pages/booklist/booklist"
   ],
   "window": {
     "backgroundTextStyle": "light",

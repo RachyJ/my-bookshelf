@@ -1,0 +1,7 @@
+<!--booklist.wxml-->
+<scroll-view scroll-y="true" style="height:{{scrollHeight}}px"
+  bindscrolltolower="scrollLowerEvent">
+  <view><text>novel</text></view>
+  <view><text>essey</text></view>
+  <view><text>tech</text></view>
+</scroll-view>
