@@ -56,9 +56,17 @@ Page({
     wx.navigateTo({
       url: '../detail/detail?id=' + bid
     });
-  }
+  },
+
+  //跳转到书单页面
+  toBookList: function (e) {
+    console.log("item touch moved")
+  },
 
 });
+
+
+
 
 /**
  * 请求图书信息

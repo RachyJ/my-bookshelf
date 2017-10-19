@@ -13,7 +13,6 @@
     <view class="logo" wx:if="{{isInit}}">
       <image src="../../images/book.png" />
       <view><text>豆瓣图书</text></view>
-      <text style="font-size:30rpx;">Designed by Oopsguy</text>
     </view>
 
     <view class="header" wx:if="{{totalRecord > 0 && !isInit}}">
@@ -23,7 +22,7 @@
     <view class="common-list" wx:if="{{totalRecord > 0}}">
 
       <block wx:for="{{pageData}}" wx:key="id">
-        <view class="list-item" data-bid="{{item.id}}" bindtap="toDetailPage">
+        <view class="list-item" data-bid="{{item.id}}" bindtap="toDetailPage" bindtouchmove='toBookList'>
           <view class="index-list-item">
             <view class="cover">
               <image class="cover-img" src="{{item.image}}"></image>
