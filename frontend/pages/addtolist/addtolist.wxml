@@ -1,5 +1,5 @@
-<!--addtolist.wxml-->
-<text>addtolist.wxml</text>
-<loading hidden="{{loadidngHidden}}">
-    加载中...
-</loading>
+<checkbox-group bindchange="checkboxChange">
+    <label class="checkbox" wx:for-items="{{items}}">
+        <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+    </label>
+</checkbox-group>

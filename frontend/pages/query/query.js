@@ -3,6 +3,13 @@ Page({
   data:{
       booklistInput: {}
   },
+
+  onLoad: function (options) {
+    this.setData({
+      title: options.title
+    })
+  },
+
   bookInput: function (res) {
     this.setData({
       bookName: res.detail.value

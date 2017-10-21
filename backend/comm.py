@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from flask import Flask, json, request, abort
 import requests, sqlite3, time
 from datetime import date
@@ -94,21 +97,23 @@ def queryBook():
             conn.close()
 
 
-@app.route('/queryBookInList', methods=['GET'])
+@app.route('/queryBookInList', methods=['POST'])
 def queryBookInList():
-        # query all books
-        book = []
+        # query the lists with the book stored
+        # return 'query lists with the book'
+        bookData = json.loads(request.data)['bookName']
+        storedlist = []
 
         conn = sqlite3.connect('data/books.db')
         cursor = conn.cursor()
 
         try:
-            cursor.execute('SELECT list_name FROM tblbooknlist WHERE title=?', (bookName,))
-            books = cursor.fetchall()
+            cursor.execute('SELECT list_name FROM tblbooknlist WHERE title=?', (bookData,))
+            lists = cursor.fetchall()
 
-            for row in books:
-                book.append(row)
-            return json.dumps(book)
+            for row in lists:
+                storedlist.append(row)
+            return json.dumps(storedlist)
         except Exception as e:
              # Roll back any change is something goes wrong
              conn.rollback()
