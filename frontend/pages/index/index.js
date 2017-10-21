@@ -50,12 +50,12 @@ Page({
     requestData.call(this);
   },
 
-  //跳转到书单页面
+  //跳转到添加到书单页面
   toBookList: function (e) {
     //console.log("item touch moved");
     var bid = e.currentTarget.dataset.bid; //图书id [data-bid]
     wx.navigateTo({
-      url: '../booklist/booklist?id=' + bid
+      url: '../addtolist/addtolist?id=' + bid
     });
   },
   

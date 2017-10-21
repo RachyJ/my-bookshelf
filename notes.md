@@ -64,3 +64,10 @@ cursor.execute("DELETE FROM tblbooknlist WHERE title=? and list_name=?;",
 [Event handling](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/view/wxml/event.html)
 
 touchmove event
+
+## 1019
+
+tab move event and goes to a new Page
+
+navigator:
+https://www.w3cschool.cn/weixinapp/weixinapp-navigator.html

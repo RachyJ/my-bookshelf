@@ -2,8 +2,10 @@
   "pages": [
     "pages/index/index",
     "pages/query/query",
+    
     "pages/detail/detail",
-    "pages/booklist/booklist"
+    "pages/booklist/booklist",
+    "pages/addtolist/addtolist"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,5 +1,11 @@
 <!--pages/index/index.wxml-->
 <view class="root" style="height: {{height}}rpx">
+    <button type="primary" class="query-button" bindtap="queryBook">查询书本📚</button>
+    <input class="ip-input" bindinput="bookInput" placeholder="书名" />
+    <button type="primary" class="query-button" bindtap="insertBook">存储书📚</button>
+    <button type="primary" class="query-button" bindtap="deleteBook">删除书📚</button>
+</view>
+<view class="root" style="height: {{height}}rpx">
     <button type="primary" class="query-button" bindtap="queryBookList">查询书单📚</button>
     <input class="ip-input" bindinput="booklistInput" placeholder="书单名称" />
     <button type="primary" class="query-button" bindtap="insertBookList">存储书单📚</button>

@@ -32,6 +32,25 @@ Page({
     })
   },
 
+
+  queryBookInList: function(res){
+    let that = this;
+    let bookName = that.data.bookName;
+    let url = 'http://127.0.0.1:5000/queryBookInList';
+
+      wx.request({
+        url: url,
+        data: {},
+        method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+        // header: {}, // 设置请求的 header
+        success: function(booklists){
+            // receive the booklists the book is in
+            console.log(booklists)
+      }
+    })
+  },
+
+
   insertBookList: function(res){
     let that = this;
     let booklistName = that.data.booklistName;
@@ -48,6 +67,7 @@ Page({
     })
   },
 
+
   deleteBookList: function(res){
     let that = this;
     let booklistName = that.data.booklistName;
@@ -60,6 +80,24 @@ Page({
         header: {'content-type': 'application/json'}, // 设置请求的 header
         success: function(res){
           console.log(res)
+      }
+    })
+  },
+
+
+  queryBook: function(res){
+
+    // url要设置成你的api地址
+    let url = 'http://127.0.0.1:5000/queryBook';
+
+      wx.request({
+        url: url,
+        data: {},
+        method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+        // header: {}, // 设置请求的 header
+        success: function(book){
+            // receive the booklist
+            console.log(book)
       }
     })
   },
