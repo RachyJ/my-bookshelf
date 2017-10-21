@@ -101,7 +101,7 @@ def queryBook():
 def queryBookInList():
         # query the lists with the book stored
         # return 'query lists with the book'
-        bookData = json.loads(request.data)['bookName']
+        bookData = json.loads(request.data)['title']
         storedlist = []
 
         conn = sqlite3.connect('data/books.db')

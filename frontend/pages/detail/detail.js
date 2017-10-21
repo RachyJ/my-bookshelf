@@ -16,8 +16,8 @@ Page( {
     var id = this.data.id;
     var _this = this;
     requests.requestBookDokDetail(
-      id, 
-      {fields: 'image,summary,publisher,title,rating,pubdate,author,author_intro,catalog'}, 
+      id,
+      {fields: 'image,summary,publisher,title,rating,pubdate,author,author_intro,catalog'},
       ( data ) => {
         _this.setData({
           bookData: data

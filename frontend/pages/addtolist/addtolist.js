@@ -1,6 +1,5 @@
 var requests = require( '../../requests/request.js' );
 var utils = require( '../../utils/util.js' );
-var bookData;
 
 Page({
   data: {
@@ -11,38 +10,36 @@ Page({
       items: [
         { name: 'USA', value: '美国'},
         { name: 'CHN', value: '中国', checked: 'true' },
-        { name: 'BRA', value: '巴西' },
-        { name: 'JPN', value: '日本' },
-        { name: 'ENG', value: '英国' },
-        { name: 'TUR', value: '法国' },
+        { name: 'BRA', value: '巴西' }
       ]
-
   },
 
   onLoad: function( option ) {
     this.setData({
       id: option.id
     });
+
+    var id = this.data.id;
+    var _this = this;
+
+     requests.requestBookDokDetail(
+       id,
+       { fields: 'title'},
+       ( data1 ) => {
+         _this.setData({
+           bookData: data1
+         });
+         }, () => {
+           wx.navigateBack();
+         }, () => {
+           _this.setData( {
+             loadidngHidden: true
+         });
+        // console.log(_this.data);
+       });
   },
 
   onReady: function () {
-
-      var id = this.data.id;
-      var _this = this;
-      requests.requestBookDokDetail(
-        id,
-        { fields: 'image,summary,publisher,title,rating,pubdate,author,author_intro,catalog'},
-        ( data ) => {
-          _this.setData({
-            bookData: data
-          });
-      }, () => {
-        wx.navigateBack();
-      }, () => {
-        _this.setData( {
-          loadidngHidden: true
-        });
-      });
 
       // get all the booklists
       let url = 'http://127.0.0.1:5000/queryBookList';
@@ -55,13 +52,17 @@ Page({
         success: function (booklist) {
           // receive the booklist and show on the page
           console.log(booklist)
+          //items.push(booklist)
         }
       })
 
       // get the booklists where the book is in
       let url2 = 'http://127.0.0.1:5000/queryBookInList';
-      //let bookName = {'bookName':bookData};
-      let bookName = {'bookName':'iOS编程'};
+
+      //console.log(this.data.bookData)
+      let bookName = this.data.bookData;
+      //let bookName = {'bookName':'Python'};
+
       wx.request({
         url: url2,
         // post the current book name
