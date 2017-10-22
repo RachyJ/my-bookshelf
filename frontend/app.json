@@ -2,7 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/query/query",
-    
+
     "pages/detail/detail",
     "pages/booklist/booklist",
     "pages/addtolist/addtolist"
@@ -12,5 +12,22 @@
     "navigationBarBackgroundColor": "#42BD56",
     "navigationBarTitleText": "豆瓣图书",
     "navigationBarTextStyle": "white"
-  }
+  },
+
+  "tabBar": {
+     "color": "#b2b2b2",
+     "selectedColor": "#353535",
+     "borderStyle": "black",
+     "backgroundColor": "#eeeeee",
+     "list": [
+       {
+         "pagePath": "pages/search/search",
+         "text": "搜索"
+       },
+       {
+         "pagePath": "pages/user/index",
+         "text": "我的"
+       }
+     ]
+   }
 }

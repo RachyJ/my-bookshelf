@@ -1,18 +1,32 @@
-// booklist.js
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    array: [
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    // get all the booklists
+    var that = this;
+    let url = 'http://127.0.0.1:5000/queryBookList';
+
+    wx.request({
+      url: url,
+      data: {},
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function (booklist) {
+        // receive the booklist and show on the page
+        //console.log(booklist.data)
+        that.data.array = booklist.data
+        that.setData({
+          array: that.data.array
+        })
+      }
+    })
   },
 
   /**
