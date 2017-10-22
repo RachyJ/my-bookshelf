@@ -3,7 +3,7 @@ conn = sqlite3.connect('data/books.db')
 c = conn.cursor()
 
 c.execute('''CREATE TABLE IF NOT EXISTS tblbook
-            (book_id INTEGER PRIMARY KEY, douban_id REAL, title TEXT, image TEXT, rating REAL)''')
+            (book_id INTEGER PRIMARY KEY, douban_id REAL, title TEXT, image TEXT, author TEXT, rating REAL)''')
 
 c.execute('''CREATE TABLE IF NOT EXISTS tblbooklist
             (list_name TEXT PRIMARY KEY, list_crtdate DATE)''')

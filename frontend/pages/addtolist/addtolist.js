@@ -39,19 +39,18 @@ Page({
     console.log(that.data)
     let id = that.data.id;
     let title = that.data.bookData.title;
-   // console.log(title)
     let image = that.data.bookData.image;
-    //let author = that.data.bookData.author;
+    let author = that.data.bookData.author[0];
     let rating = that.data.bookData.rating.average;
     let url = 'http://127.0.0.1:5000/addBook';
-    let bookInfo = {'id':id, 'title': title, 'image':image, 'rating':rating};
+    let bookInfo = {'id':id, 'title': title, 'image':image, 'author':author,'rating':rating};
     wx.request({
       url: url,
       data: bookInfo,
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { 'content-type': 'application/json' }, // 设置请求的 header
       success: function (res) {
-        console.log(res)
+        console.log(res);
       }
     })
   },

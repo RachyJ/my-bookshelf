@@ -9,19 +9,18 @@ app = Flask(__name__)
 
 @app.route('/addBook', methods=['POST'])
 def addBook():
-        # insert a book
-        # return "save book"
         douban_id = json.loads(request.data)['id']
         title = json.loads(request.data)['title']
         image = json.loads(request.data)['image']
         rating = json.loads(request.data)['rating']
+        author = json.loads(request.data)['author']
 
         conn = sqlite3.connect('data/books.db')
         cursor = conn.cursor()
 
         try:
-            cursor.execute('''INSERT OR IGNORE INTO tblbook(douban_id,title,image,rating)
-                        VALUES (?,?,?,?)''',(douban_id,title,image,rating))
+            cursor.execute('''INSERT OR IGNORE INTO tblbook(douban_id,title,image,author,rating)
+                        VALUES (?,?,?,?,?)''',(douban_id,title,image,author,rating))
             conn.commit()
             return "书本存储成功"
         except Exception as e:
