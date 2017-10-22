@@ -29,12 +29,12 @@ Page({
            _this.setData( {
              loadidngHidden: true
          });
-        console.log(_this.data);
+        //console.log(_this.data);
        });
   },
 
   insertBook: function (res) {
-    console.log("insert book");
+    //console.log("insert book");
     let that = this;
     console.log(that.data)
     let id = that.data.id;
@@ -51,6 +51,7 @@ Page({
       header: { 'content-type': 'application/json' }, // 设置请求的 header
       success: function (res) {
         console.log(res);
+        //wx.navigateBack();
       }
     })
   },

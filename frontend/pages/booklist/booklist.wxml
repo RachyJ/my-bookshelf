@@ -1,4 +1,7 @@
-<!--booklist.wxml-->
+<view class='item add_box' bindtap="onNewItem">
+    <text>+</text>
+</view>
+
 <view wx:for="{{array}}" wx:key="*this">
 {{item}}
 </view>

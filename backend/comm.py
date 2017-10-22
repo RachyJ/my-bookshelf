@@ -31,6 +31,31 @@ def addBook():
             conn.close()
 
 
+@app.route('/queryBooks', methods=['GET'])
+def queryBooks():
+        # query all books
+        book = []
+
+        conn = sqlite3.connect('data/books.db')
+        cursor = conn.cursor()
+
+        try:
+            cursor.execute('''SELECT title FROM tblbook''')
+            books = cursor.fetchall()
+
+            for row in books:
+                #return('{0} : {1}, {2}'.format(row['list_id'], row['list_name'], row['list_crtdate']))
+                book.append(row)
+                # return booklist
+            return json.dumps(book)
+        except Exception as e:
+             # Roll back any change is something goes wrong
+             conn.rollback()
+             return "exception occured"
+        finally:
+            conn.close()
+
+
 @app.route('/queryBookList', methods=['GET'])
 def queryBookList():
         # query all book lists
