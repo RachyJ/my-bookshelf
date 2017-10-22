@@ -37,14 +37,14 @@ Page({
     console.log("insert book");
     let that = this;
     console.log(that.data)
-   // let booklistName = that.data.booklistName;
+    let id = that.data.id;
     let title = that.data.bookData.title;
    // console.log(title)
     let image = that.data.bookData.image;
-    let author = that.data.bookData.author;
+    //let author = that.data.bookData.author;
     let rating = that.data.bookData.rating.average;
     let url = 'http://127.0.0.1:5000/addBook';
-    let bookInfo = {'title': title, 'image':image, 'author':author, 'rating':rating};
+    let bookInfo = {'id':id, 'title': title, 'image':image, 'rating':rating};
     wx.request({
       url: url,
       data: bookInfo,

@@ -11,25 +11,25 @@ app = Flask(__name__)
 def addBook():
         # insert a book
         # return "save book"
+        douban_id = json.loads(request.data)['id']
         title = json.loads(request.data)['title']
         image = json.loads(request.data)['image']
-        #author = json.loads(request.data)['author']
         rating = json.loads(request.data)['rating']
-        #
-        # conn = sqlite3.connect('data/books.db')
-        # cursor = conn.cursor()
-        #
-        # try:
-        #     cursor.execute('''INSERT OR IGNORE INTO tblbooklist(list_name,list_crtdate)
-        #                 VALUES (?,?)''',(new_list,today))
-        #     conn.commit()
-        #     return "书单存储成功"
-        # except Exception as e:
-        #      # Roll back any change is something goes wrong
-        #      conn.rollback()
-        #      return "exception occured"
-        # finally:
-        #     conn.close()
+
+        conn = sqlite3.connect('data/books.db')
+        cursor = conn.cursor()
+
+        try:
+            cursor.execute('''INSERT OR IGNORE INTO tblbook(douban_id,title,image,rating)
+                        VALUES (?,?,?,?)''',(douban_id,title,image,rating))
+            conn.commit()
+            return "书本存储成功"
+        except Exception as e:
+             # Roll back any change is something goes wrong
+             conn.rollback()
+             return "exception occured"
+        finally:
+            conn.close()
 
 
 @app.route('/queryBookList', methods=['GET'])
