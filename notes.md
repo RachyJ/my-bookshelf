@@ -71,3 +71,49 @@ tab move event and goes to a new Page
 
 navigator:
 https://www.w3cschool.cn/weixinapp/weixinapp-navigator.html
+
+# 1022
+
+```
+changeItemInArray: function() {
+  // you can use this way to modify a danamic data path
+  this.setData({
+    'array[0].text':'changed data'
+  })
+},
+```
+
+[列表渲染](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/view/wxml/list.html)
+
+```
+{id: "20233610", loadidngHidden: true, bookData: {…}, __webviewId__: 1340}
+bookData
+:
+author
+:
+["Russell, Jesse; Cohn, Ronald;"]
+author_intro
+:
+""
+catalog
+:
+""
+image
+:
+"https://img1.doubanio.com/mpic/s22977968.jpg"
+pubdate
+:
+""
+publisher
+:
+"Book on Demand Ltd."
+rating
+:
+{max: 10, numRaters: 0, average: "0.0", min: 0}
+summary
+:
+""
+title
+:
+"IOS"
+```

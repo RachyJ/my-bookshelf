@@ -6,12 +6,6 @@ Page({
       id: null,
       loadidngHidden: false,
       bookData: null,
-
-      items: [
-        { name: 'USA', value: '美国'},
-        { name: 'CHN', value: '中国', checked: 'true' },
-        { name: 'BRA', value: '巴西' }
-      ]
   },
 
   onLoad: function( option ) {
@@ -24,10 +18,10 @@ Page({
 
      requests.requestBookDokDetail(
        id,
-       { fields: 'title'},
-       ( data1 ) => {
+       { fields: 'image,summary,publisher,title,rating,pubdate,author,author_intro,catalog' },
+       ( data ) => {
          _this.setData({
-           bookData: data1
+           bookData: data
          });
          }, () => {
            wx.navigateBack();
@@ -35,50 +29,73 @@ Page({
            _this.setData( {
              loadidngHidden: true
          });
-        // console.log(_this.data);
+        console.log(_this.data);
        });
+  },
+
+  insertBook: function (res) {
+    console.log("insert book");
+    let that = this;
+    console.log(that.data)
+   // let booklistName = that.data.booklistName;
+    let title = that.data.bookData.title;
+   // console.log(title)
+    let image = that.data.bookData.image;
+    let author = that.data.bookData.author;
+    let rating = that.data.bookData.rating.average;
+    let url = 'http://127.0.0.1:5000/addBook';
+    let bookInfo = {'title': title, 'image':image, 'author':author, 'rating':rating};
+    wx.request({
+      url: url,
+      data: bookInfo,
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: { 'content-type': 'application/json' }, // 设置请求的 header
+      success: function (res) {
+        console.log(res)
+      }
+    })
   },
 
   onReady: function () {
 
-      // get all the booklists
-      let url = 'http://127.0.0.1:5000/queryBookList';
+  //     // get all the booklists
+  //     let url = 'http://127.0.0.1:5000/queryBookList';
 
-      wx.request({
-        url: url,
-        data: {},
-        method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-        // header: {}, // 设置请求的 header
-        success: function (booklist) {
-          // receive the booklist and show on the page
-          console.log(booklist)
-          //items.push(booklist)
-        }
-      })
+  //     wx.request({
+  //       url: url,
+  //       data: {},
+  //       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+  //       // header: {}, // 设置请求的 header
+  //       success: function (booklist) {
+  //         // receive the booklist and show on the page
+  //         console.log(booklist)
+  //         //items.push(booklist)
+  //       }
+  //     })
 
-      // get the booklists where the book is in
-      let url2 = 'http://127.0.0.1:5000/queryBookInList';
+  //     // get the booklists where the book is in
+  //     let url2 = 'http://127.0.0.1:5000/queryBookInList';
 
-      //console.log(this.data.bookData)
-      let bookName = this.data.bookData;
-      //let bookName = {'bookName':'Python'};
+  //     //console.log(this.data.bookData)
+  //     let bookName = this.data.bookData;
+  //     //let bookName = {'bookName':'Python'};
 
-      wx.request({
-        url: url2,
-        // post the current book name
-        data: bookName,
-        method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-        header: {'content-type': 'application/json'},
-        success: function (booklist) {
-          // receive the booklist and show on the page
-          console.log(booklist)
-        }
-      })
+  //     wx.request({
+  //       url: url2,
+  //       // post the current book name
+  //       data: bookName,
+  //       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+  //       header: {'content-type': 'application/json'},
+  //       success: function (booklist) {
+  //         // receive the booklist and show on the page
+  //         console.log(booklist)
+  //       }
+  //     })
 
-  },
+  // },
 
-  checkboxChange: function (e) {
-    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+  // checkboxChange: function (e) {
+  //   console.log('checkbox发生change事件，携带value值为：', e.detail.value)
   },
 
   /**
