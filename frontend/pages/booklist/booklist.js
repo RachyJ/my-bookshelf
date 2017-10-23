@@ -37,7 +37,7 @@ Page({
       // header: {}, // 设置请求的 header
       success: function (booklist) {
         // receive the booklist and show on the page
-        console.log(booklist.data)
+       // console.log(booklist.data)
         that.data.pageData = booklist.data
         that.setData({
           pageData: that.data.pageData,
@@ -48,12 +48,28 @@ Page({
     })
   },
 
+  //跳转到详细页面
+  toDetailPage: function (e) {
+    var bid = e.currentTarget.dataset.bid; //图书id [data-bid]
+    wx.navigateTo({
+      url: '../detail/detail?id=' + bid
+    });
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
 
   },
+
+  //下拉请求数据
+  scrollLowerEvent: function (e) {
+    if (this.data.loadingMore)
+      return;
+    requestData.call(this);
+  },
+
 
   /**
    * 生命周期函数--监听页面显示
@@ -94,13 +110,6 @@ Page({
    */
   onReachBottom: function () {
 
-  },
-
-  //下拉请求数据
-  scrollLowerEvent: function (e) {
-    if (this.data.loadingMore)
-      return;
-    requestData.call(this);
   },
 
   /**

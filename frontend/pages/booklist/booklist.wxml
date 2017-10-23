@@ -7,7 +7,7 @@
         <view class="common-list">
 
       <block wx:for="{{pageData}}" wx:key="*id">
-        <view class="list-item" data-bid="{{item[0]}}" bindtap="toDetailPage" bindtouchmove='toBookList'>
+        <view class="list-item" data-bid="{{item[0]}}" bindtap="toDetailPage" bindtouchmove='removeBook'>
           <view class="index-list-item">
             <view class="cover">
               <image class="cover-img" src="{{item[2]}}"></image>
@@ -20,9 +20,6 @@
         </view>
       </block>
 
-    </view>
-        <view class="refresh-footer" wx:if="{{loadingMore}}">
-      <icon type="waiting" size="30" color="{{footerIconColor}}"  />
     </view>
 
 </scroll-view>
