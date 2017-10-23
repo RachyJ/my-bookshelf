@@ -58,7 +58,7 @@ Page({
       url: '../addtolist/addtolist?id=' + bid
     });
   },
-  
+
   //跳转到详细页面
   toDetailPage: function (e) {
     var bid = e.currentTarget.dataset.bid; //图书id [data-bid]

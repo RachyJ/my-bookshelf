@@ -117,3 +117,11 @@ title
 :
 "IOS"
 ```
+
+## 1023
+
+```
+<view wx:for="{{pageData}}" wx:key="*this">
+{{item}}
+</view>
+```

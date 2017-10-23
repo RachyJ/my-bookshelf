@@ -40,7 +40,7 @@ def queryBooks():
         cursor = conn.cursor()
 
         try:
-            cursor.execute('''SELECT title FROM tblbook''')
+            cursor.execute('''SELECT douban_id, title, image, author, rating FROM tblbook''')
             books = cursor.fetchall()
 
             for row in books:
