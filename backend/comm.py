@@ -30,6 +30,26 @@ def addBook():
         finally:
             conn.close()
 
+@app.route('/removeBook', methods=['POST'])
+def removeBook():
+        # remove a book from the list
+
+        douban_id = json.loads(request.data)['id']
+        conn = sqlite3.connect('data/books.db')
+        cursor = conn.cursor()
+
+        try:
+            cursor.execute("DELETE FROM tblbook WHERE douban_id=?;",(douban_id,))
+            conn.commit()
+            return "成功移出书单"
+        except Exception as e:
+             # Roll back any change is something goes wrong
+             conn.rollback()
+             return "exception occured"
+        finally:
+            conn.close()
+
+
 
 @app.route('/queryBooks', methods=['GET'])
 def queryBooks():

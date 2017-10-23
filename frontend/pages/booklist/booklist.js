@@ -23,29 +23,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // get all the booklists
-    var that = this;
-    that.setData({ loadingMore: true, isInit: false });
-    var start = that.data.pageIndex;
-
-    let url = 'http://127.0.0.1:5000/queryBooks';
-
-    wx.request({
-      url: url,
-      data: {},
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
-      success: function (booklist) {
-        // receive the booklist and show on the page
-       // console.log(booklist.data)
-        that.data.pageData = booklist.data
-        that.setData({
-          pageData: that.data.pageData,
-          pageIndex: start + 1,
-          totalRecord: that.data.total
-        })
-      }
-    })
+    requestBookData.call(this);
   },
 
   //跳转到详细页面
@@ -54,6 +32,24 @@ Page({
     wx.navigateTo({
       url: '../detail/detail?id=' + bid
     });
+  },
+
+  removeBook: function(e) {
+    var bid = e.currentTarget.dataset.bid; //图书id [data-bid]
+    console.log(bid);
+    let that = this;
+    let url = 'http://127.0.0.1:5000/removeBook';
+    let id = {'id':bid};
+      wx.request({
+        url: url,
+        data: id,
+        method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+        header: {'content-type': 'application/json'}, // 设置请求的 header
+        success: function(res){
+          console.log(res);
+          requestBookData.call(that);
+      }
+    })
   },
 
   /**
@@ -118,4 +114,30 @@ Page({
   onShareAppMessage: function () {
 
   }
-})
+});
+
+function requestBookData(){
+  // get all the booklists
+  var that = this;
+  that.setData({ loadingMore: true, isInit: false });
+  var start = that.data.pageIndex;
+
+  let url = 'http://127.0.0.1:5000/queryBooks';
+
+  wx.request({
+    url: url,
+    data: {},
+    method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+    // header: {}, // 设置请求的 header
+    success: function (booklist) {
+      // receive the booklist and show on the page
+     // console.log(booklist.data)
+      that.data.pageData = booklist.data
+      that.setData({
+        pageData: that.data.pageData,
+        pageIndex: start + 1,
+        totalRecord: that.data.total
+      })
+    }
+  })
+}
