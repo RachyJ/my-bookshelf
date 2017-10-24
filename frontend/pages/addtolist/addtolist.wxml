@@ -1,2 +1,6 @@
 
 <button class="submit-button" bindtap="insertBook">存储书📚</button>
+
+<view class="text-box" scroll-y="true" scroll-top="{{scrollTop}}">
+  <text>{{text}}</text>
+</view>

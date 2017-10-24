@@ -2,7 +2,6 @@
   "pages": [
     "pages/index/index",
     "pages/query/query",
-
     "pages/detail/detail",
     "pages/booklist/booklist",
     "pages/addtolist/addtolist"
@@ -15,19 +14,20 @@
   },
 
   "tabBar": {
-     "color": "#b2b2b2",
-     "selectedColor": "#353535",
-     "borderStyle": "black",
-     "backgroundColor": "#eeeeee",
-     "list": [
-       {
-         "pagePath": "pages/search/search",
-         "text": "搜索"
-       },
-       {
-         "pagePath": "pages/user/index",
-         "text": "我的"
-       }
-     ]
-   }
+   "list": [{
+     "pagePath": "pages/index/index",
+     "text": "搜索",
+     "color": "#eeeeee",
+     "iconPath": "src/img/book.png",
+     "selectedIconPath": "src/img/bookLight.png"
+   }, {
+     "pagePath": "pages/booklist/booklist",
+     "text": "我的书单",
+     "color": "#eeeeee",
+     "iconPath": "src/img/note.png",
+     "selectedIconPath": "src/img/noteLight.png"
+
+   }]
+ }
+
 }

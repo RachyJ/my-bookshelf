@@ -6,6 +6,7 @@ Page({
       id: null,
       loadidngHidden: false,
       bookData: null,
+      texts:['书本存储成功！']
   },
 
   onLoad: function( option ) {
@@ -51,7 +52,12 @@ Page({
       header: { 'content-type': 'application/json' }, // 设置请求的 header
       success: function (res) {
         console.log(res);
-        //wx.navigateBack();
+        that.setData({
+          text: res.data
+        });
+        // wx.navigateBack({
+        //   url: 'pages/index/index'
+        // })
       }
     })
   },
