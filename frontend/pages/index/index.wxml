@@ -2,14 +2,6 @@
   <input type="text" bindinput="searchInputEvent" placeholder="输入书名搜索"></input><icon bindtap="searchClickEvent"  type="search" size="20"/>
 </view>
 
-<view class="btn-area">
-  <navigator url="/pages/query/query" hover-class="navigator-hover">跳转到query</navigator>
-</view>
-
-<view class="btn-area">
-  <navigator url="/pages/booklist/booklist" hover-class="navigator-hover">booklist</navigator>
-</view>
-
 <scroll-view scroll-y="true" style="height:{{scrollHeight}}px"
   bindscrolltolower="scrollLowerEvent">
 

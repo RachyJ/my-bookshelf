@@ -228,3 +228,13 @@ success: function () {
                    }, 1000)
                }
 ```
+
+footer: tabBar
+
+https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html?t=1475052055756
+
+
+### issues to solve:
+
+* duplicate record issue
+* add book commit msg; different event?
