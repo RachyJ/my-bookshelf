@@ -238,3 +238,5 @@ https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html?t=1475052055756
 
 * duplicate record issue
 * add book commit msg; different event?
+
+To check: http://www.cnblogs.com/kklldog/p/6691529.html

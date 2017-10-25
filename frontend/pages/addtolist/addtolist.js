@@ -55,9 +55,12 @@ Page({
         that.setData({
           text: res.data
         });
-        // wx.navigateBack({
-        //   url: 'pages/index/index'
-        // })
+
+        setTimeout(function () {
+          wx.switchTab({
+            url: "../../pages/index/index"
+          });
+        }, 1000)
       }
     })
   },
