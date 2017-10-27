@@ -2,6 +2,7 @@
     <view class="cover-container">
         <image src="{{bookData.image}}"></image>
     </view>
+    <button class="submit-button" bindtap="insertBook">加入书单📚</button>
 
     <view class="book-meta">
         <view class="meta-info">

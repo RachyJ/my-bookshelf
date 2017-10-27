@@ -79,6 +79,7 @@ Page({
           });
         }
       })
+      requestBookData.call(this);
   },
 
   /**
