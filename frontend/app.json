@@ -4,7 +4,8 @@
     "pages/query/query",
     "pages/detail/detail",
     "pages/booklist/booklist",
-    "pages/addtolist/addtolist"
+    "pages/addtolist/addtolist",
+    "pages/isbn"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -12,22 +13,29 @@
     "navigationBarTitleText": "豆瓣图书",
     "navigationBarTextStyle": "white"
   },
-
   "tabBar": {
-   "list": [{
-     "pagePath": "pages/index/index",
-     "text": "搜索",
-     "color": "#eeeeee",
-     "iconPath": "src/img/book.png",
-     "selectedIconPath": "src/img/bookLight.png"
-   }, {
-     "pagePath": "pages/booklist/booklist",
-     "text": "我的书单",
-     "color": "#eeeeee",
-     "iconPath": "src/img/note.png",
-     "selectedIconPath": "src/img/noteLight.png"
-
-   }]
- }
-
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "搜索",
+        "color": "#eeeeee",
+        "iconPath": "src/img/book.png",
+        "selectedIconPath": "src/img/bookLight.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "ISBN",
+        "color": "#eeeeee",
+        "iconPath": "src/img/book.png",
+        "selectedIconPath": "src/img/bookLight.png"
+      },
+      {
+        "pagePath": "pages/booklist/booklist",
+        "text": "我的书单",
+        "color": "#eeeeee",
+        "iconPath": "src/img/note.png",
+        "selectedIconPath": "src/img/noteLight.png"
+      }
+    ]
+  }
 }

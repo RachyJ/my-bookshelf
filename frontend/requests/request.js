@@ -35,6 +35,13 @@ function requestSearchBook(data, successCb, errorCb, completeCb) {
 }
 
 /**
+ * 搜索图书ISBN
+ */
+function requestSearchBookIsbn(data, successCb, errorCb, completeCb) {
+  request(api.API_BOOK_ISBNSEARCH, data, successCb, errorCb, completeCb);
+}
+
+/**
  * 获取图书详细信息
  */
 function requestBookDokDetail(id, data, successCb, errorCb, completeCb) {
